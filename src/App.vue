@@ -1,7 +1,7 @@
 <script setup>
 
-import Navbar from "@/components/navbar.vue";
-import Home from "@/components/home.vue";
+import Navbar from "@/components/Navbar.vue";
+import Home from "@/components/Home.vue";
 import {nextTick, ref} from "vue";
 
 </script>
