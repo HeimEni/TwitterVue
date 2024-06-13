@@ -1,10 +1,11 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Navbar from "../components/navbar.vue";
 import Home from "../components/home.vue";
+import tweet from "@/components/tweet.vue";
 
 const routes = [
-    { path: '/', component: Navbar },
-    { path: '/tweet', component: Navbar },
+    { path: '/', component: Home },
+    { path: '/tweet', component: tweet },
 ]
 
 const router = createRouter({

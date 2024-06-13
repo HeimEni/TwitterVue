@@ -7,8 +7,10 @@ import {nextTick, ref} from "vue";
 </script>
 
 <template>
-  <Navbar/>
-  <Home/>
+  <div>
+    <Navbar />
+    <router-view />
+  </div>
 </template>
 <style scoped>
 </style>
