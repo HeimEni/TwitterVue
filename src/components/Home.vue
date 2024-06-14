@@ -95,8 +95,7 @@ export default {
             this.tweets = data;
           });
     },
-    likeTweet(tweet_id, user_id) {
-      console.log(localStorage)
+    likeTweet(tweet_id) {
       fetch('http://127.0.0.1:3000/interaction/like/new', {
         method: 'POST',
         headers: {
@@ -104,13 +103,14 @@ export default {
         },
         body: JSON.stringify({
           tweet_id: tweet_id,
-          user_id: user_id
+          user_id: localStorage.getItem("user_id")
         }),
       }).then(() => {
+        console.log("tweet liked")
         this.getAllTweet(); // Refresh tweets to get updated likes
       });
     },
-    shareTweet(tweet_id) {
+    createRetweet(tweet_id) {
       fetch('http://127.0.0.1:3000/interaction/share', {
         method: 'POST',
         headers: {
@@ -118,7 +118,7 @@ export default {
         },
         body: JSON.stringify({
           tweet_id: tweet_id,
-          user_id: "user_id_12345",
+          user_id: localStorage.getItem("user_id"),
         }),
       }).then(() => {
         this.getAllTweet(); // Refresh tweets to get updated shares
@@ -172,11 +172,11 @@ export default {
           </p>
           <div class="inline-flex">
             {{t.nb_like}}
-                        <a  @click.once="likeTweet(t._id, this.user_id), t.nb_like += 1">
+                        <a  @click.once="likeTweet(t._id), t.nb_like += 1">
                           <img  style="height: 30px" src="/like.png">
                         </a>
             {{t.nb_retweet}}
-                        <a @click.once="shareTweet(t._id), t.nb_retweet.length += 1">
+                        <a @click.once="createRetweet(t._id), t.nb_retweet += 1">
 <!--                          <div v-if="haveLike"></div>-->
                           <img style="height: 30px" src="/share.png">
                         </a>

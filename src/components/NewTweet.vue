@@ -4,7 +4,7 @@ import router from "@/router/index.js";
 export default {
   data() {
     return {
-"text" : '',
+      "text" : '',
       "user": localStorage.getItem("user")
     };
   },
@@ -17,7 +17,7 @@ export default {
         },
         body: JSON.stringify(({
           "text": text,
-          "id_user": this.user._id
+          "id_user": localStorage.getItem("user_id")
         }))
       })  .then(res => res.json())
           .then(data => {
